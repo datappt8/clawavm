@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawAVM - 用户指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+            background: #fff;
+            color: #1d1d1f;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 100px;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        /* Title Slide */
+        .slide-title {
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .slide-title .shield {
+            width: 160px;
+            height: 160px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .slide-title h1 {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+        
+        .slide-title p {
+            font-size: 28px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        /* Content Slides */
+        .slide-content {
+            background: #fff;
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 60px;
+            left: 100px;
+            font-size: 14px;
+            color: #86868b;
+            font-weight: 600;
+        }
+        
+        .slide-header {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 50px;
+            line-height: 1.1;
+            color: #1d1d1f;
+        }
+        
+        /* What is */
+        .what-is-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .what-is-text {
+            flex: 1;
+        }
+        
+        .what-is-text p {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #424245;
+            margin-bottom: 30px;
+        }
+        
+        .what-is-features {
+            list-style: none;
+        }
+        
+        .what-is-features li {
+            font-size: 20px;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            padding-left: 32px;
+            position: relative;
+        }
+        
+        .what-is-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34C759;
+            font-weight: 700;
+        }
+        
+        .what-is-visual {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #fff 100%);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        /* Install Steps */
+        .install-steps {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .install-card {
+            flex: 1;
+            background: #f5f5f7;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .install-card .step-icon {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .install-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .install-card p {
+            font-size: 16px;
+            color: #86868b;
+            line-height: 1.5;
+        }
+        
+        /* Create VM Steps */
+        .create-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .create-step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #f5f5f7;
+            border-radius: 20px;
+            padding: 30px 40px;
+        }
+        
+        .create-step .num {
+            width: 50px;
+            height: 50px;
+            background: #007AFF;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .create-step h4 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .create-step p {
+            font-size: 16px;
+            color: #86868b;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .feature-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item p {
+            font-size: 16px;
+            color: #86868b;
+            line-height: 1.5;
+        }
+        
+        /* Snapshot */
+        .snapshot-demo {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .snapshot-box {
+            flex: 1;
+            background: #f5f5f7;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .snapshot-box .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .snapshot-box h4 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .snapshot-box p {
+            font-size: 18px;
+            color: #86868b;
+        }
+        
+        .snapshot-arrow {
+            font-size: 48px;
+            color: #007AFF;
+        }
+        
+        /* Best Practices */
+        .practices-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .practice-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 30px;
+            background: #f5f5f7;
+            border-radius: 16px;
+        }
+        
+        .practice-item .num {
+            width: 44px;
+            height: 44px;
+            background: #1d1d1f;
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .practice-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .practice-item p {
+            font-size: 16px;
+            color: #86868b;
+        }
+        
+        /* Final Slide */
+        .slide-final {
+            background: #000;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .slide-final .check {
+            width: 120px;
+            height: 120px;
+            background: #34C759;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .slide-final h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .slide-final p {
+            font-size: 24px;
+            color: #86868b;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #007AFF;
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 100px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 40px;
+        }
+        
+        .nav-hint {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-size: 14px;
+            color: #86868b;
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title -->
+    <div class="slide slide-title">
+        <div class="shield">🛡️</div>
+        <h1>ClawAVM</h1>
+        <p>安全虚拟化管理器</p>
+    </div>
+
+    <!-- Slide 2: What is -->
+    <div class="slide slide-content">
+        <span class="slide-number">01</span>
+        <h2 class="slide-header">这是什么？</h2>
+        <div class="what-is-content">
+            <div class="what-is-text">
+                <p>ClawAVM 是一款专门设计的虚拟机管理工具，帮助您安全地运行可疑软件和分析恶意程序。</p>
+                <ul class="what-is-features">
+                    <li>一键创建隔离环境</li>
+                    <li>自动保护主机安全</li>
+                    <li>秒级恢复到干净状态</li>
+                    <li>完全免费开源</li>
+                </ul>
+            </div>
+            <div class="what-is-visual">🖥️</div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Install -->
+    <div class="slide slide-content">
+        <span class="slide-number">02</span>
+        <h2 class="slide-header">安装</h2>
+        <div class="install-steps">
+            <div class="install-card">
+                <div class="step-icon">💻</div>
+                <h3>系统要求</h3>
+                <p>Windows 10/11<br>VMware 已安装<br>8GB+ 内存</p>
+            </div>
+            <div class="install-card">
+                <div class="step-icon">⬇️</div>
+                <h3>下载</h3>
+                <p>官网下载安装包<br>或 pip install<br>clawavm</p>
+            </div>
+            <div class="install-card">
+                <div class="step-icon">🚀</div>
+                <h3>启动</h3>
+                <p>双击图标<br>按向导完成<br>开始使用</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Create VM -->
+    <div class="slide slide-content">
+        <span class="slide-number">03</span>
+        <h2 class="slide-header">创建虚拟机</h2>
+        <div class="create-steps">
+            <div class="create-step">
+                <span class="num">1</span>
+                <div>
+                    <h4>打开 ClawAVM</h4>
+                    <p>双击桌面图标启动程序</p>
+                </div>
+            </div>
+            <div class="create-step">
+                <span class="num">2</span>
+                <div>
+                    <h4>点击「创建虚拟机」</h4>
+                    <p>左侧栏的绿色按钮</p>
+                </div>
+            </div>
+            <div class="create-step">
+                <span class="num">3</span>
+                <div>
+                    <h4>填写配置</h4>
+                    <p>名称 MySandbox，内存 4GB，CPU 2核</p>
+                </div>
+            </div>
+            <div class="create-step">
+                <span class="num">4</span>
+                <div>
+                    <h4>保持安全选项</h4>
+                    <p>网络隔离、禁用剪贴板、禁用拖放</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Features -->
+    <div class="slide slide-content">
+        <span class="slide-number">04</span>
+        <h2 class="slide-header">核心功能</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">▶️</div>
+                <h4>启动/停止</h4>
+                <p>一键控制虚拟机<br>正常或强制关机</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📸</div>
+                <h4>快照</h4>
+                <p>保存干净状态<br>随时恢复</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📋</div>
+                <h4>克隆</h4>
+                <p>快速复制环境<br>多任务并行</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Snapshots -->
+    <div class="slide slide-content">
+        <span class="slide-number">05</span>
+        <h2 class="slide-header">快照保护</h2>
+        <div class="snapshot-demo">
+            <div class="snapshot-box">
+                <div class="icon">🟢</div>
+                <h4>干净状态</h4>
+                <p>系统刚刚安装<br>创建快照保存</p>
+            </div>
+            <div class="snapshot-arrow">→</div>
+            <div class="snapshot-box">
+                <div class="icon">🔴</div>
+                <h4>运行可疑软件</h4>
+                <p>分析恶意程序<br>系统可能被感染</p>
+            </div>
+            <div class="snapshot-arrow">→</div>
+            <div class="snapshot-box">
+                <div class="icon">✅</div>
+                <h4>恢复快照</h4>
+                <p>一键恢复干净<br>病毒完全清除</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Best Practices -->
+    <div class="slide slide-content">
+        <span class="slide-number">06</span>
+        <h2 class="slide-header">安全最佳实践</h2>
+        <div class="practices-list">
+            <div class="practice-item">
+                <span class="num">1</span>
+                <div>
+                    <h4>运行可疑软件前，必须创建快照</h4>
+                    <p>这是最重要的步骤，没有例外</p>
+                </div>
+            </div>
+            <div class="practice-item">
+                <span class="num">2</span>
+                <div>
+                    <h4>保持网络隔离</h4>
+                    <p>不要让中毒的虚拟机连接到互联网</p>
+                </div>
+            </div>
+            <div class="practice-item">
+                <span class="num">3</span>
+                <div>
+                    <h4>禁用剪贴板和拖放</h4>
+                    <p>防止恶意软件逃逸到主机</p>
+                </div>
+            </div>
+            <div class="practice-item">
+                <span class="num">4</span>
+                <div>
+                    <h4>使用克隆分析不同样本</h4>
+                    <p>每个样本使用独立的虚拟机</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Final -->
+    <div class="slide slide-final">
+        <div class="check">✓</div>
+        <h2>开始安全地<br>分析恶意软件</h2>
+        <p>免费下载 · 开源 · 安全</p>
+        <a href="#" class="download-btn">立即下载</a>
+    </div>
+
+    <div class="nav-hint">按空格或方向键翻页 / 打印为PDF</div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy(0, window.innerHeight);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy(0, -window.innerHeight);
+            }
+        });
+    </script>
+</body>
+</html>
