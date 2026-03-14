@@ -15,7 +15,7 @@
 - 🔐 **安全隔离** - 网络隔离、剪贴板禁用、拖放禁用
 - 📸 **快照管理** - 创建安全快照、快速恢复
 - 📋 **克隆功能** - 快速复制虚拟机环境
-- 🌐 **多虚拟化支持** - VMware Workstation/Player (VirtualBox 开发中)
+- 🌐 **多虚拟化支持** - VMware Workstation/Player、VirtualBox
 
 ### 安全特性
 - ✅ 网络隔离模式（仅主机/无网络）
@@ -155,7 +155,7 @@ README.md                    # 本文件
 |------|------|------|
 | VMware Workstation | ✅ 已实现 | 基于 vmrun/VIX API |
 | VMware Player | ✅ 支持 | 使用相同 API |
-| VirtualBox | 🚧 开发中 | 计划下一版本 |
+| VirtualBox | ✅ 已实现 | 基于 VBoxManage 命令行 |
 | KVM/QEMU | 🚧 开发中 | Linux 原生支持 |
 | Hyper-V | 📋 计划中 | Windows 原生支持 |
 
