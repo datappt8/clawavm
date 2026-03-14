@@ -1,0 +1,34 @@
+# ClawAVM - 安全虚拟化管理器
+# Python 依赖列表
+
+# 核心框架
+PyQt6>=6.4.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# 虚拟化管理
+pyvmomi>=8.0.0  # VMware vSphere API
+libvirt-python>=9.0.0; sys_platform == 'linux'  # KVM/QEMU
+
+# 安全与加密
+cryptography>=41.0.0
+pycryptodome>=3.19.0
+
+# 数据处理
+pydantic>=2.5.0
+python-multipart>=0.0.6
+
+# 系统工具
+psutil>=5.9.0
+pyyaml>=6.0.1
+
+# 网络
+httpx>=0.25.0
+websockets>=12.0
+
+# 开发调试（可选）
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.1.0
+mypy>=1.7.0
