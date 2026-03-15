@@ -97,6 +97,18 @@ engine.start_vm(space_id)
 # engine.delete_vm(space_id)
 ```
 
+### macOS 用户使用 VMware Fusion
+```python
+from claw_avm import ClawSecureVMwareFusionEngine
+
+# macOS 上使用 VMware Fusion 引擎
+engine = ClawSecureVMwareFusionEngine(workspace_path="./isolated_space")
+
+# 其余操作相同
+space_id = engine.create_secure_vm(config)
+engine.start_vm(space_id)
+```
+
 ### GUI 版本
 ```bash
 python -m claw_avm.gui
@@ -156,13 +168,14 @@ clawavm/
 
 ## 🔧 支持的虚拟化平台
 
-| 平台 | 状态 | 说明 |
-|------|------|------|
-| VMware Workstation | ✅ 支持 | vmrun/VIX API |
-| VMware Player | ✅ 支持 | 同 Workstation API |
-| VirtualBox | ✅ 支持 | VBoxManage CLI |
-| KVM/QEMU | 📋 计划中 | Linux 原生 |
-| Hyper-V | 📋 计划中 | Windows 原生 |
+| 平台 | Windows | Linux | macOS | 说明 |
+|------|---------|-------|-------|------|
+| VMware Workstation | ✅ | ✅ | ❌ | vmrun/VIX API |
+| VMware Fusion | ❌ | ❌ | ✅ | macOS 专用版本 |
+| VMware Player | ✅ | ✅ | ❌ | 同 Workstation API |
+| VirtualBox | ✅ | ✅ | ✅ | VBoxManage CLI，全平台支持 |
+| KVM/QEMU | 📋 计划中 | 📋 计划中 | ❌ | Linux 原生 |
+| Hyper-V | 📋 计划中 | ❌ | ❌ | Windows 原生 |
 
 ---
 

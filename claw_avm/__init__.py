@@ -12,11 +12,13 @@ __license__ = "MIT"
 
 from claw_avm.secure.engine import ClawSecureEngine, VMStatus
 from claw_avm.engine.vmware import ClawSecureVMwareEngine
+from claw_avm.engine.vmware_fusion import ClawSecureVMwareFusionEngine
 from claw_avm.engine.virtualbox import ClawSecureVirtualBoxEngine
 
 __all__ = [
     "ClawSecureEngine",
     "ClawSecureVMwareEngine",
+    "ClawSecureVMwareFusionEngine",
     "ClawSecureVirtualBoxEngine",
     "VMStatus",
     "__version__"
