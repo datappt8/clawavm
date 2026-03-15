@@ -1,0 +1,38 @@
+<!-- ClawAVM 图标 (SVG 格式，可用于转换为 ICO) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="lobster" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#e63946"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆角背景 -->
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+  
+  <!-- 龙虾简化图标 -->
+  <g transform="translate(128, 128) scale(1.2)">
+    <!-- 身体 -->
+    <ellipse cx="0" cy="10" rx="35" ry="40" fill="url(#lobster)"/>
+    <!-- 头部 -->
+    <ellipse cx="0" cy="-30" rx="28" ry="30" fill="url(#lobster)"/>
+    <!-- 眼睛 -->
+    <circle cx="-12" cy="-50" r="8" fill="white"/>
+    <circle cx="12" cy="-50" r="8" fill="white"/>
+    <circle cx="-12" cy="-50" r="4" fill="black"/>
+    <circle cx="12" cy="-50" r="4" fill="black"/>
+    <!-- 钳子 -->
+    <ellipse cx="-42" cy="5" rx="18" ry="10" fill="#e63946" transform="rotate(-25)"/>
+    <ellipse cx="42" cy="5" rx="18" ry="10" fill="#e63946" transform="rotate(25)"/>
+    <!-- 尾巴 -->
+    <path d="M -18,45 Q 0,60 18,45 L 12,55 Q 0,68 -12,55 Z" fill="#c1121f"/>
+  </g>
+  
+  <!-- 盾牌装饰 -->
+  <path d="M 128,200 L 98,185 L 98,160 Q 98,150 128,140 Q 158,150 158,160 L 158,185 Z" 
+        fill="rgba(0,180,216,0.3)" stroke="#00b4d8" stroke-width="3"/>
+</svg>
