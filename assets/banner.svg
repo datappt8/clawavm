@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <!-- 深海渐变背景 -->
+    <linearGradient id="deepSea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#0d2137"/>
+    </linearGradient>
+    
+    <!-- 发光效果 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 龙虾橙色渐变 -->
+    <linearGradient id="lobsterRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="50%" style="stop-color:#e63946"/>
+      <stop offset="100%" style="stop-color:#c1121f"/>
+    </linearGradient>
+    
+    <!-- 护盾蓝色渐变 -->
+    <linearGradient id="shieldBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00b4d8"/>
+      <stop offset="50%" style="stop-color:#0077b6"/>
+      <stop offset="100%" style="stop-color:#023e8a"/>
+    </linearGradient>
+    
+    <!-- 金色安全边框 -->
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="50%" style="stop-color:#ffb700"/>
+      <stop offset="100%" style="stop-color:#ff9500"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1200" height="400" fill="url(#deepSea)"/>
+  
+  <!-- 气泡装饰 -->
+  <circle cx="100" cy="80" r="8" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="150" cy="120" r="5" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="80" cy="150" r="6" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="1100" cy="100" r="7" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1050" cy="140" r="4" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="1120" cy="180" r="6" fill="rgba(255,255,255,0.06)"/>
+  
+  <!-- 中央护盾容器 -->
+  <g transform="translate(600, 200)">
+    <!-- 外圈发光 -->
+    <circle cx="0" cy="0" r="130" fill="none" stroke="url(#shieldBlue)" stroke-width="3" opacity="0.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="120" fill="none" stroke="url(#shieldBlue)" stroke-width="2" opacity="0.3"/>
+    
+    <!-- 主护盾 -->
+    <path d="M 0,-100 Q 80,-80 90,0 Q 80,90 0,110 Q -80,90 -90,0 Q -80,-80 0,-100 Z" 
+          fill="rgba(0, 119, 182, 0.15)" 
+          stroke="url(#shieldBlue)" 
+          stroke-width="4"
+          filter="url(#glow)"/>
+    
+    <!-- 内圈 -->
+    <path d="M 0,-80 Q 65,-65 75,0 Q 65,75 0,90 Q -65,75 -75,0 Q -65,-65 0,-80 Z" 
+          fill="none" 
+          stroke="url(#goldBorder)" 
+          stroke-width="2"
+          opacity="0.8"/>
+    
+    <!-- 龙虾图标 -->
+    <g transform="translate(0, 5) scale(0.85)">
+      <!-- 龙虾身体 -->
+      <ellipse cx="0" cy="20" rx="35" ry="45" fill="url(#lobsterRed)"/>
+      
+      <!-- 龙虾头部 -->
+      <ellipse cx="0" cy="-25" rx="28" ry="32" fill="url(#lobsterRed)"/>
+      
+      <!-- 眼睛 -->
+      <circle cx="-12" cy="-45" r="8" fill="white"/>
+      <circle cx="12" cy="-45" r="8" fill="white"/>
+      <circle cx="-12" cy="-45" r="4" fill="black"/>
+      <circle cx="12" cy="-45" r="4" fill="black"/>
+      <circle cx="-10" cy="-47" r="1.5" fill="white"/>
+      <circle cx="14" cy="-47" r="1.5" fill="white"/>
+      
+      <!-- 触须 -->
+      <path d="M -20,-50 Q -40,-80 -60,-90" stroke="#e63946" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 20,-50 Q 40,-80 60,-90" stroke="#e63946" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M -15,-55 Q -35,-85 -50,-100" stroke="#ff6b35" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 15,-55 Q 35,-85 50,-100" stroke="#ff6b35" stroke-width="2" fill="none" stroke-linecap="round"/>
+      
+      <!-- 大钳子 -->
+      <g transform="translate(-45, 10) rotate(-30)">
+        <ellipse cx="0" cy="0" rx="20" ry="12" fill="url(#lobsterRed)"/>
+        <path d="M -15,-5 L -25,-15 L -20,-2 Z" fill="#c1121f"/>
+        <path d="M -15,5 L -25,15 L -20,2 Z" fill="#c1121f"/>
+      </g>
+      <g transform="translate(45, 10) rotate(30)">
+        <ellipse cx="0" cy="0" rx="20" ry="12" fill="url(#lobsterRed)"/>
+        <path d="M 15,-5 L 25,-15 L 20,-2 Z" fill="#c1121f"/>
+        <path d="M 15,5 L 25,15 L 20,2 Z" fill="#c1121f"/>
+      </g>
+      
+      <!-- 小钳子/腿 -->
+      <ellipse cx="-35" cy="30" rx="12" ry="6" fill="#e63946" transform="rotate(-20)"/>
+      <ellipse cx="35" cy="30" rx="12" ry="6" fill="#e63946" transform="rotate(20)"/>
+      <ellipse cx="-32" cy="45" rx="10" ry="5" fill="#e63946" transform="rotate(-15)"/>
+      <ellipse cx="32" cy="45" rx="10" ry="5" fill="#e63946" transform="rotate(15)"/>
+      
+      <!-- 尾巴 -->
+      <path d="M -20,60 Q 0,80 20,60 L 15,75 Q 0,90 -15,75 Z" fill="url(#lobsterRed)"/>
+      <path d="M -10,75 Q 0,85 10,75 L 0,85 Z" fill="#c1121f"/>
+    </g>
+    
+    <!-- 安全锁图标 (右下角) -->
+    <g transform="translate(50, 50)">
+      <circle cx="0" cy="0" r="25" fill="url(#shieldBlue)" stroke="url(#goldBorder)" stroke-width="2"/>
+      <!-- 锁体 -->
+      <rect x="-10" y="-5" width="20" height="18" rx="3" fill="white"/>
+      <!-- 锁钩 -->
+      <path d="M -8,-5 L -8,-12 Q -8,-20 0,-20 Q 8,-20 8,-12 L 8,-5" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="4"
+            stroke-linecap="round"/>
+      <!-- 钥匙孔 -->
+      <circle cx="0" cy="2" r="3" fill="#023e8a"/>
+      <rect x="-1" y="2" width="2" height="6" fill="#023e8a"/>
+    </g>
+  </g>
+  
+  <!-- 标题文字 -->
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="white" filter="url(#glow)">
+    ClawAVM
+  </text>
+  <text x="600" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#00b4d8" letter-spacing="3">
+    OPENCLAW 安全隔离虚拟机
+  </text>
+  
+  <!-- 装饰性代码符号 -->
+  <text x="50" y="350" font-family="monospace" font-size="14" fill="rgba(0,180,216,0.3)">&lt;secure&gt;</text>
+  <text x="1100" y="350" font-family="monospace" font-size="14" fill="rgba(0,180,216,0.3)">&lt;/secure&gt;</text>
+</svg>
